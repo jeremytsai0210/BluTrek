@@ -1,3 +1,6 @@
+// /backend/db/models/index.js
+// Purpose: This file is used to import all the models in the models folder and associate them with each other.
+// Details: This file imports all the models in the models folder and associates them with each other. It reads all the model files in the models folder and creates a Sequelize instance for each model. It then associates the models with each other using the associate method if it exists in the model file. Finally, it exports the Sequelize instance and the Sequelize package.
 'use strict';
 
 const fs = require('fs');
