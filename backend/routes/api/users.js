@@ -15,7 +15,7 @@ const validateSignup = [
     check('email')
         .exists({ checkFalsy: true })
         .isEmail()
-        .withMessage('Please provide a valid email.'),
+        .withMessage('Invalid email.'),
     check('username')
         .exists({ checkFalsy: true })
         .isLength({ min: 4 })
@@ -30,10 +30,10 @@ const validateSignup = [
         .withMessage('Password must be 6 characters or more.'),
     check('firstName')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide a first name.'),
+        .withMessage('First Name is required.'),
     check('lastName')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide a last name.'),
+        .withMessage('Last Name is required.'),
     handleValidationErrors
 ];
 
@@ -41,21 +41,38 @@ const validateSignup = [
 router.post('/', validateSignup, async (req, res) => {
     const { email, password, username, firstName, lastName } = req.body;
     const hashedPassword = bcrypt.hashSync(password);
-    const user = await User.create({ email, username, hashedPassword, firstName, lastName });
 
-    const safeUser = {
-        id: user.id,
-        email: user.email,
-        username: user.username,
-        firstName: user.firstName,
-        lastName: user.lastName,
-    };
+    try {
+        const user = await User.create({ email, username, hashedPassword, firstName, lastName });
 
-    await setTokenCookie(res, safeUser);
+        const safeUser = {
+            id: user.id,
+            email: user.email,
+            username: user.username,
+            firstName: user.firstName,
+            lastName: user.lastName,
+        };
+    
+        await setTokenCookie(res, safeUser);
+    
+        return res.status(201).json({
+            user: safeUser
+        });
+    } catch (error) {
+        if (error.name === 'SequelizeUniqueConstraintError') {
+            const errors = error.errors.map((err) => {
+                if (err.path === 'email') {
+                    return { email: 'User with that email already exists' };
+                }
+                if (err.path === 'username') {
+                    return { username: 'User with that username already exists' };
+                }
+            });
+            return res.status(500).json({ errors });
+        }
+        return res.status(500).json({ error: 'Internal server error' });
+    }
 
-    return res.json({
-        user: safeUser
-    });
 });
 
 module.exports = router;
