@@ -1,4 +1,4 @@
-/* Style the navigation bar
+/* Style the navigation bar */
 ul {
     display: flex;
     justify-content: space-between;
@@ -104,4 +104,4 @@ button:hover {
 
 .create-spot-link:hover {
     text-decoration: underline;
-} */
+}
