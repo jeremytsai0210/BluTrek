@@ -13,6 +13,25 @@ function LoginFormModal() {
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
+  const handleDemoLogin = (e) => {
+    e.preventDefault();
+    setErrors({});
+
+    const demoCredentials = {
+      credential: 'Demo-lition',
+      password: 'password'
+    }
+
+    return dispatch(sessionActions.login(demoCredentials))
+      .then(closeModal)
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors({});
@@ -20,7 +39,8 @@ function LoginFormModal() {
       .then(closeModal)
       .catch(async (res) => {
         const data = await res.json();
-        if (data && data.errors) {
+        if (data?.errors) {
+          console.log(data.errors);
           setErrors(data.errors);
         }
       });
@@ -36,7 +56,6 @@ function LoginFormModal() {
             type="text"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
-            required
           />
         </label>
         <label>
@@ -45,14 +64,18 @@ function LoginFormModal() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
           />
         </label>
-        {errors.credential && (
-          <p>{errors.credential}</p>
-        )}
-        <button type="submit">Log In</button>
+        {errors.credential && <p className="errors">{errors.credential}</p>}
+        {errors.password && <p className="errors">{errors.password}</p>}
+        <button type="submit" /*disabled={credential.length < 4 || password.length < 6}*/>Log In</button>
       </form>
+
+      <div className="demo-link-container">
+        <button type="button" className="demo-link" onClick={handleDemoLogin}>
+          Log in as Demo User
+        </button>
+      </div>
     </>
   );
 }
