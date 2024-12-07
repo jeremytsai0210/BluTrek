@@ -68,7 +68,11 @@ function LoginFormModal() {
         </label>
         {errors.credential && <p className="errors">{errors.credential}</p>}
         {errors.password && <p className="errors">{errors.password}</p>}
-        <button type="submit" /*disabled={credential.length < 4 || password.length < 6}*/>Log In</button>
+        <button 
+          type="submit"
+          disabled={credential.length < 4 || password.length < 6}
+          className="login-button"
+        >Log In</button>
       </form>
 
       <div className="demo-link-container">
