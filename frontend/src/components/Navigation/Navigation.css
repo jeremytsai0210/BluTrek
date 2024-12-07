@@ -15,12 +15,14 @@ li {
 }
 
 .home-logo {
-    height: 100px;
-    width: 100x;
+    height: 90px;
+    width: 90px;
     font-weight: bold;
 }
 
 .home-logo:hover {
+    height: 100px;
+    width: 100px;
     background-color: #e2e6ea;
 }
 

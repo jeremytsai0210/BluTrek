@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import blutrekLogo from '/blutrek.ico';
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -9,7 +10,9 @@ function Navigation({ isLoaded }) {
   return (
     <ul>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/">
+          <img src={blutrekLogo} alt="BluTrek Logo" className="home-logo" />
+        </NavLink>
       </li>
       {isLoaded && (
         <li>
