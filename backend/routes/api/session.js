@@ -27,6 +27,23 @@ const validateLogin = [
 router.post('/', validateLogin, async (req, res, next) => {
     const { credential, password } = req.body;
 
+    console.log(credential);
+    console.log(password);
+
+    if (!credential || !password) {
+        const err = new Error('Login failed');
+        err.status = 400;
+        err.title = 'Login failed';
+        err.message = 'Bad Request';
+        if (!credential) {
+            err.errors = { credential: 'Email or username is required' };
+        }
+        if (!password) {
+            err.errors = { password: 'Password is required' };
+        }
+        return next(err);
+    }
+
     const user = await User.unscoped().findOne({
         where: {
             [Op.or]: {
@@ -35,19 +52,6 @@ router.post('/', validateLogin, async (req, res, next) => {
             }
         }
     });
-
-    // if (!credential || !password) {
-    //     const err = new Error('Login failed');
-    //     err.status = 400;
-    //     err.title = 'Login failed';
-    //     err.message = 'Bad Request';
-    //     if (!credential) {
-    //         err.errors = { credential: 'Email or username is required' };
-    //     }
-    //     if (!password) {
-    //         err.errors = { password: 'Password is required' };
-    //     }
-    //     return next(err);
 
     if (!user || !bcrypt.compareSync(password, user.hashedPassword.toString())) {
         const err = new Error('Invalid credentials');
