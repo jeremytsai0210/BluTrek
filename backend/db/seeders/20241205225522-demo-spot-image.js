@@ -22,77 +22,77 @@ module.exports = {
     await SpotImage.bulkCreate([
       {
         spotId: 1,
-        url: "https://unsplash.com/photos/photo-of-gray-building-USrZRcRS2Lw",
+        url: "https://images.unsplash.com/photo-1448317971280-6c74e016e49c?q=80&w=1832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: true,
       },
       {
         spotId: 1,
-        url: "https://unsplash.com/photos/vehicles-parked-along-the-road-near-metal-bridge-fC9ydjoOOHA",
+        url: "https://images.unsplash.com/photo-1476837754190-8036496cea40?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: false,
       },
       {
         spotId: 1,
-        url: "https://unsplash.com/photos/people-walking-on-pedestrian-lane-during-night-time-l8ypMiU1Hio",
+        url: "https://images.unsplash.com/photo-1602940659805-770d1b3b9911?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: false,
       },
       {
         spotId: 1,
-        url: "https://unsplash.com/photos/birds-eye-view-of-new-york-usa-during-daytime-9zQkRU9IsDk",
+        url: "https://images.unsplash.com/photo-1518355077561-4af7abce973d?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: false,
       },
       {
         spotId: 1,
-        url: "https://unsplash.com/photos/gray-bicycle-beside-building-SydhCioEmcw",
+        url: "https://images.unsplash.com/photo-1549654747-1fe362f45d7b?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: false,
       },
       {
         spotId: 2,
-        url: "https://unsplash.com/photos/a-house-with-a-lot-of-plants-and-trees-around-it-Rdk4MMko20s",
+        url: "https://images.unsplash.com/photo-1709418440159-9958a213324e?q=80&w=1664&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: true,
       },
       {
         spotId: 2,
-        url: "https://unsplash.com/photos/a-view-of-a-city-from-the-top-of-a-hill-IwWSapTHn98",
+        url: "https://images.unsplash.com/photo-1711427686399-67e98ab5ada1?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: false,
       },
       {
         spotId: 2,
-        url: "https://unsplash.com/photos/hollywood-mountain-kIR55P1eXJI",
+        url: "https://images.unsplash.com/photo-1518416177092-ec985e4d6c14?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: false,
       },
       {
         spotId: 2,
-        url: "https://unsplash.com/photos/green-palm-trees-near-sea-shore-oWpKOgwssTI",
+        url: "https://images.unsplash.com/photo-1526927541727-4654bf5bf29a?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: false,
       },
       {
         spotId: 3,
-        url: "https://unsplash.com/photos/photo-of-high-rise-building-tnv84LOjes4",
+        url: "https://images.unsplash.com/photo-1494522855154-9297ac14b55f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: true,
       },
       {
         spotId: 4,
-        url: "https://unsplash.com/photos/a-city-skyline-with-a-ferris-wheel-in-the-foreground-_Rx2BD-EMc8",
+        url: "https://images.unsplash.com/photo-1679516985866-7e62312cb08f?q=80&w=1844&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: true,
       },
       {
         spotId: 4,
-        url: "https://unsplash.com/photos/an-aerial-view-of-a-highway-intersection-in-a-city-6JhP4N60x3Q",
+        url: "https://images.unsplash.com/photo-1633627290885-0461dd93e8a2?q=80&w=1664&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: false,
       },
       {
         spotId: 5,
-        url: "https://unsplash.com/photos/an-aerial-view-of-a-city-with-mountains-in-the-background-akE66HU-_Kg",
+        url: "https://images.unsplash.com/photo-1706403222567-06fe8d8dc93e?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: true,
       },
       {
         spotId: 5,
-        url: "https://unsplash.com/photos/aerial-view-of-city-during-daytime-VDpM5hiyTng",
+        url: "https://images.unsplash.com/photo-1617407867245-f1315ab14d98?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: false,
       },
       {
         spotId: 5,
-        url: "https://unsplash.com/photos/a-tall-cactus-sitting-on-top-of-a-rocky-hillside--KrHfjWh53M",
+        url: "https://images.unsplash.com/photo-1649261223984-545578366b2e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         preview: false,
       }
     ], options)

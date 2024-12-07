@@ -22,23 +22,23 @@ module.exports = {
     await ReviewImage.bulkCreate([
       {
         reviewId: 1,
-        url: "https://unsplash.com/photos/white-and-brown-cat-lying-on-brown-wooden-floor-BphuDA60if4",
+        url: "https://images.unsplash.com/photo-1597237154674-1a0d2274cef4?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       },
       {
         reviewId: 2,
-        url: "https://unsplash.com/photos/a-black-and-white-cat-laying-on-its-back-on-a-bed-Qq3UqgCjH98",
+        url: "https://images.unsplash.com/photo-1695390838800-ee7886efb253?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       },
       {
         reviewId: 4,
-        url: "https://unsplash.com/photos/a-cat-wearing-a-blue-and-black-checkered-shirt-OtDLRtPzGxQ",
+        url: "https://images.unsplash.com/photo-1637929955294-bb4d829285ef?q=80&w=1828&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       },
       {
         reviewId: 5,
-        url: "https://unsplash.com/photos/orange-cat-AMoTwvqBm3Q",
+        url: "https://images.unsplash.com/photo-1574265800613-a7ca1cbcf54a?q=80&w=1635&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       },
       {
         reviewId: 1,
-        url: "https://unsplash.com/photos/a-cat-wearing-sunglasses-and-looking-at-the-camera-6KaUGzRscyE",
+        url: "https://images.unsplash.com/photo-1670739368045-7f09844fc862?q=80&w=1663&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       }
     ], options)
   },
