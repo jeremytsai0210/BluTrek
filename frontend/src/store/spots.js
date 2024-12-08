@@ -60,6 +60,17 @@ export const getAllSpots = () => async dispatch => {
     }
 }
 
+// GET a single Spot through its ID
+// export const getSpotDetail = (spotId) => async dispatch => {
+//     // console.log('Fetch = GET a single Spot: ', spotId);
+//     const response = await fetch(`/api/spots/${spotId}`);
+
+//     if (response.ok) {
+//         const spot = await response.json();
+//         dispatch(load(spot));
+//     }
+// }
+
 // POST a Spot
 export const createSpot = (spot) => async dispatch => {
     // console.log('Fetch - POST a Spot:', spot);
