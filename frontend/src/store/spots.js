@@ -6,6 +6,8 @@ export const ADD_SPOT = "spots/ADD_SPOT";
 export const UPDATE_SPOT = "spots/UPDATE_SPOT";
 export const DELETE_SPOT = "spots/DELETE_SPOT";
 
+export const ADD_SPOT_IMAGES = "spots/ADD_SPOT_IMAGES";
+
 // Action Creators
 // GET
 const load = (spots) => {
@@ -43,6 +45,14 @@ const remove = (spotId) => {
     }
 }
 
+// POST Spot Images
+const addImages = (images) => {
+    return {
+        type: ADD_SPOT_IMAGES,
+        images
+    }
+}
+
 // Validate user
 const isLoggedIn = (state) => {
     // console.log('Checking if there is a logged in User');
@@ -73,11 +83,13 @@ export const getAllSpots = () => async dispatch => {
 
 // POST a Spot
 export const createSpot = (spot) => async dispatch => {
-    // console.log('Fetch - POST a Spot:', spot);
+    console.log('Fetch - POST a Spot:', spot);
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
         body: JSON.stringify(spot)
     });
+
+    console.log('Response:', response);
 
     if (response.ok) {
         const newSpot = await response.json();
@@ -113,6 +125,71 @@ export const deleteSpot = (spotId) => async dispatch => {
     }
 }
 
+// POST Spot Images
+export const createSpotImages = (spotId, previewImage, images) => async dispatch => {
+    console.log('Fetch - POST Spot Images:', images);
+    
+    console.log('previewImage: ', previewImage);
+    console.log('images: ', images);
+    // Need to separate all images one by one.
+    // Create each JSON body and send them one by one.
+    const previewResponse = await csrfFetch(`/api/spots/${spotId}/images`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(previewImage),
+    });
+
+    console.log("Preview Response: ", previewResponse);
+
+    if (previewResponse.ok) {
+        const newPreviewImage = await previewResponse.json();
+        dispatch(addImages(newPreviewImage));
+    } else {
+        console.error("Failed to submit preview image: ", previewResponse);
+    }
+    
+    images.forEach(async (image) => {
+        const response = await csrfFetch(`/api/spots/${spotId}/images`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(image),
+        });
+
+        console.log("Response: ", response);
+
+        if (response.ok) {
+            const newImage = await response.json();
+            dispatch(addImages(newImage));
+        } else {
+            console.error("Failed to submit image: ", response);
+        }
+    });
+
+    console.log("All images submitted.");
+
+    return previewImage, images;
+
+    // const response = await csrfFetch(`/api/spots/${spotId}/images`, {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(images),
+    // });
+
+    // if (response.ok) {
+    //     const newImages = await response.json();
+    //     dispatch(addImages(newImages));
+    //     return newImages;
+    // } else {
+    //     console.error("Failed to submit images: ", response);
+    // }
+}
+
 // Reducer
 const initialState = {};
 
@@ -144,6 +221,12 @@ const spotsReducer = (state = initialState, action) => {
             const newState = { ...state };
             delete newState[action.spotId];
             return newState;
+        }
+        case ADD_SPOT_IMAGES: {
+            return {
+                ...state,
+                [action.images.SpotId]: action.images
+            };
         }
         default:
             return state;

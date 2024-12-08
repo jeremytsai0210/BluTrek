@@ -1,0 +1,67 @@
+/* TODO: Style CreateSpot Form */
+.new-spot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    /* border: 1px solid #ccc; */
+    border-radius: 8px;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #ccc;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.new-spot h1,
+.new-spot h2,
+.new-spot p {
+    align-self: flex-start;
+}
+
+.new-spot form {
+    max-width: 600px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.country,
+.address,
+.city-state-container,
+.lat-long-container,
+.description,
+.name,
+.price,
+.preview-image {
+    width: 100%;
+    margin: 10px, 0;
+}
+
+.city-state-container,
+.lat-long-container {
+    display: flex;
+    gap: 10px;
+}
+
+.description textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.new-spot input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

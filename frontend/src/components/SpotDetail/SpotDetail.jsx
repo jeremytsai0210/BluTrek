@@ -65,14 +65,15 @@ function SpotDetail() {
     }
     // console.log(noReviews());
 
+    const noImage = "https://placehold.co/600x400?text=No available image";
     // Grab the previewImage for the large image
-    const previewImage = spot.SpotImages.find((image) => {
-        return image = image.preview === true
-    }).url;
+    // const previewImage = spot.SpotImages.find((image) => {
+    //     return image = image.preview === true
+    // }).url;
+    const previewImage = noImage;
     // console.log(previewImage);
 
     // Grab the images for the small images
-    const noImage = "https://placehold.co/600x400?text=No available image";
     const smallImages = [];
     spot.SpotImages.forEach((image) => {
         if(image.preview === false) {
