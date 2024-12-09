@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllSpots } from "../../store/spots";
+import { FaStar } from "react-icons/fa6";
 import "./LandingPage.css";
 
 function LandingPage() {
@@ -40,7 +41,10 @@ function LandingPage() {
                                 <p>{spot.name}</p>
                             </div>
                             <div className="spot-rating">
-                                <div className="stars">{spot.avgRating || "NEW"}</div>
+                                <div className="stars">
+                                    <FaStar />
+                                    {spot.avgRating || "NEW"}
+                                </div>
                             </div>
                             <div className="spot-price">
                                 ${spot.price} / night

@@ -19,7 +19,12 @@ function SpotDetail() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [rating, setRating] = useState(null);
 
-    const user = useSelector((state) => state.session.user);
+    const user = useSelector((state) => {
+        console.log(state);
+        console.log(state.session);
+        console.log(state.session.user);
+        return state.session.user
+    });
 
     const onChange = (newRating) => {
         setRating(newRating);
@@ -127,9 +132,15 @@ function SpotDetail() {
     // 3. User is logged in and have posted a review - hidden
     // 4. User is not logged in - hidden
 
-    const isOwner = user && spot.Owner.id === user.id;
-    const hasBeenReviewed = reviews.find((review) => review.User.id === user.id);
-    const canReview = user && !isOwner && !hasBeenReviewed;
+    let isOwner = false;
+    let hasBeenReviewed = false;
+    let canReview = false;
+
+    if (user) {
+        isOwner = user && spot.Owner.id === user.id;
+        hasBeenReviewed = reviews.find((review) => review.User.id === user.id);
+        canReview = user && !isOwner && !hasBeenReviewed;
+    }
 
     return (
         <>
