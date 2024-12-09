@@ -87,13 +87,13 @@ export const getSpotDetail = (spotId) => async dispatch => {
 
 // POST a Spot
 export const createSpot = (spot) => async dispatch => {
-    console.log('Fetch - POST a Spot:', spot);
+    // console.log('Fetch - POST a Spot:', spot);
     const response = await csrfFetch('/api/spots', {
         method: 'POST',
         body: JSON.stringify(spot)
     });
 
-    console.log('Response:', response);
+    // console.log('Response:', response);
 
     if (response.ok) {
         const newSpot = await response.json();
@@ -131,10 +131,10 @@ export const deleteSpot = (spotId) => async dispatch => {
 
 // POST Spot Images
 export const createSpotImages = (spotId, previewImage, images) => async dispatch => {
-    console.log('Fetch - POST Spot Images:', images);
+    // console.log('Fetch - POST Spot Images:', images);
     
-    console.log('previewImage: ', previewImage);
-    console.log('images: ', images);
+    // console.log('previewImage: ', previewImage);
+    // console.log('images: ', images);
     // Need to separate all images one by one.
     // Create each JSON body and send them one by one.
     const previewResponse = await csrfFetch(`/api/spots/${spotId}/images`, {
@@ -145,7 +145,7 @@ export const createSpotImages = (spotId, previewImage, images) => async dispatch
         body: JSON.stringify(previewImage),
     });
 
-    console.log("Preview Response: ", previewResponse);
+    // console.log("Preview Response: ", previewResponse);
 
     if (previewResponse.ok) {
         const newPreviewImage = await previewResponse.json();
@@ -163,7 +163,7 @@ export const createSpotImages = (spotId, previewImage, images) => async dispatch
             body: JSON.stringify(image),
         });
 
-        console.log("Response: ", response);
+        // console.log("Response: ", response);
 
         if (response.ok) {
             const newImage = await response.json();
@@ -173,7 +173,7 @@ export const createSpotImages = (spotId, previewImage, images) => async dispatch
         }
     });
 
-    console.log("All images submitted.");
+    // console.log("All images submitted.");
 
     return previewImage, images;
 

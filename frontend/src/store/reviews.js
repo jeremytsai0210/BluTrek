@@ -30,9 +30,9 @@ export const fetchReviews = (spotId) => async dispatch => {
 
     if (response.ok) {
         const reviews = await response.json();
-        console.log('\n');
-        console.log(reviews);
-        console.log('\n');
+        // console.log('\n');
+        // console.log(reviews);
+        // console.log('\n');
         dispatch(loadReviews(spotId, reviews));
     }
 };

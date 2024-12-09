@@ -55,7 +55,7 @@ const UpdateSpot = () => {
 
         const result = await dispatch(spotActions.updateSpot(spotId, updatedSpot));
 
-        console.log(result);
+        // console.log(result);
 
         if (result.errors) {
             setErrors(result.errors);
