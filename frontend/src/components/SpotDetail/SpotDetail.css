@@ -82,7 +82,7 @@ img {
     justify-content: space-between;
 }
 
-button {
+.reserve-button {
     background-color: #007bff;
     color: white;
     width: 100%;
@@ -93,12 +93,12 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.reserve-button:hover {
     background-color: #0056b3;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-button:active {
+.reserve-button:active {
     background-color: #003f7f;
     transform: scale(0.98);
 }
@@ -142,6 +142,7 @@ button:active {
 .review-entry {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     padding: 5px;
     margin: 5px;
 }
@@ -159,10 +160,28 @@ button:active {
     margin: 20px;
 }
 
+.delete-review-button {
+    align-items: flex-start;
+    background-color: red;
+    color: white;
+    width: 100px;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.delete-review-button:hover {
+    background-color: firebrick;
+}
+
 hr {
     width: 100%;
     border: 1px solid royalblue;
 }
+
+/* MEDIA QUERIES */
 
 @media (max-width: 768px) {
     /* .images {

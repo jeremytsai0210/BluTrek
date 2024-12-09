@@ -1,6 +1,6 @@
-/* TODO: Style DeleteSpot Modal */
+/* TODO: Style DeleteReview Modal */
 
-.delete-spot-modal {
+.delete-review-modal {
     display: flex;
     flex-direction: column;
     text-align: center;

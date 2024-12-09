@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 // import * as reviewActions from "../../store/reviews";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import ReviewModal from "../ReviewModal/ReviewModal";
+import DeleteReviewModal from "../DeleteReviewModal/DeleteReviewModal";
 import './SpotDetail.css';
 
 function SpotDetail() {
@@ -167,7 +168,10 @@ function SpotDetail() {
                                         : reviewCount}</span>
                                 </span>
                             </div>
-                            <button onClick={() => alert("Feature coming soon")}>Reserve</button>
+                            <button 
+                                className="reserve-button"
+                                onClick={() => alert("Feature coming soon")}
+                            >Reserve</button>
                         </div>
                     </div>
                 </div>
@@ -219,6 +223,13 @@ function SpotDetail() {
                             <span className="review-author">{review.User.firstName}</span>
                             <span className="review-date">{reviewDates[index]}</span>
                             <span className="review-text">{review.review}</span>
+                            {(user && review.User.id === user.id && (
+                            <OpenModalButton
+                                buttonText="Delete"
+                                modalComponent={<DeleteReviewModal review={review} />}
+                                className="delete-review-button"
+                            />
+                            ))}
                             <hr />
                         </div>
                     ))}
