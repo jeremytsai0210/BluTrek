@@ -158,7 +158,7 @@ function SpotDetail() {
                     <div>
                         <div className="price-and-review-box">
                             <div className="price-and-review">
-                                <p className="spot-price">${spot.price.toFixed(2)} night</p>
+                                <p className="spot-price">${spot.price} night</p>
                                 <span className="spot-review">
                                     <i className="fa-fa-star">⭐</i>
                                     {averageRating}
