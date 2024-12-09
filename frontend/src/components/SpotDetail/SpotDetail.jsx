@@ -1,20 +1,20 @@
 // frontend/src/components/SpotDetail/SpotDetail.jsx
 
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { /* useDispatch, */ useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import * as spotActions from "../../store/spots";
-import * as reviewActions from "../../store/reviews";
+// import * as spotActions from "../../store/spots";
+// import * as reviewActions from "../../store/reviews";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import ReviewModal from "../ReviewModal/ReviewModal";
 import './SpotDetail.css';
 
 function SpotDetail() {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const { spotId } = useParams();
     const [spot, setSpot] = useState(null);
     const [reviews, setReviews] = useState([]);
-    const [hasReviewed, setHasReviewed] = useState(false);
+    // const [hasReviewed, setHasReviewed] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [rating, setRating] = useState(null);
 

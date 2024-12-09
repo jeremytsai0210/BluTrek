@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem.jsx';
@@ -53,6 +54,9 @@ function ProfileButton({ user }) {
           <>
             <li className="first-name">Hello, {user.firstName}!</li>
             <li className="email">{user.email}</li>
+            <li className="manage-spots-link">
+              <Link to="/spots/current">Manage Spots</Link>
+            </li>
             <li>
               <button onClick={logout}>Log Out</button>
             </li>

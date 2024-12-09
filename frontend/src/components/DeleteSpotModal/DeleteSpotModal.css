@@ -1,0 +1,13 @@
+/* TODO: Style DeleteSpot Modal */
+
+.delete-spot-modal h1 {
+    text-align: center;
+}
+
+.yes-button {
+    background-color: red;
+}
+
+.no-button {
+    background-color: darkgrey;
+}
