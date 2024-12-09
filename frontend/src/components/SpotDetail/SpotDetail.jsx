@@ -194,6 +194,7 @@ function SpotDetail() {
                 <div className="review-modal">
                     {canReview && (
                         <OpenModalButton
+                            isOpen={isModalOpen}
                             onButtonClick={() => setIsModalOpen(true)}
                             buttonText={"Post Your Review"}
                             modalComponent={
