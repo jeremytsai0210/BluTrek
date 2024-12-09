@@ -81,7 +81,7 @@ const ManageSpots = () => {
                                     className="manage-edit-button"
                                     onClick={(e) => {
                                         e.preventDefault();
-                                        // navigate(`/spots/${spot.id}/edit`);
+                                        navigate(`/spots/${spot.id}/edit`);
                                     }}
                                 >Update</button>
                                 <OpenModalButton

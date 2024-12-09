@@ -56,11 +56,11 @@ const addImages = (images, spotId) => {
     }
 }
 
-// Validate user
-const isLoggedIn = (state) => {
-    // console.log('Checking if there is a logged in User');
-    return state.session.user !== null;
-}
+// // Validate user
+// const isLoggedIn = (state) => {
+//     // console.log('Checking if there is a logged in User');
+//     return state.session.user !== null;
+// }
 
 // GET all Spots
 export const getAllSpots = () => async dispatch => {
@@ -70,19 +70,20 @@ export const getAllSpots = () => async dispatch => {
     if (response.ok) {
         const spots = await response.json();
         dispatch(load(spots));
+        return spots;
     }
 }
 
 // GET a single Spot through its ID
-// export const getSpotDetail = (spotId) => async dispatch => {
-//     // console.log('Fetch = GET a single Spot: ', spotId);
-//     const response = await fetch(`/api/spots/${spotId}`);
+export const getSpotDetail = (spotId) => async dispatch => {
+    // console.log('Fetch = GET a single Spot: ', spotId);
+    const response = await fetch(`/api/spots/${spotId}`);
 
-//     if (response.ok) {
-//         const spot = await response.json();
-//         dispatch(load(spot));
-//     }
-// }
+    if (response.ok) {
+        const spot = await response.json();
+        dispatch(load(spot));
+    }
+}
 
 // POST a Spot
 export const createSpot = (spot) => async dispatch => {
@@ -102,11 +103,11 @@ export const createSpot = (spot) => async dispatch => {
 }
 
 // PUT a Spot
-export const updateSpot = (spot) => async dispatch => {
+export const updateSpot = (spotId, newSpot) => async dispatch => {
     // console.log('Fetch - PUT a Spot:', spot);
-    const response = await csrfFetch(`/api/spots/${spot.id}`, {
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
         method: 'PUT',
-        body: JSON.stringify(spot)
+        body: JSON.stringify(newSpot)
     });
 
     if (response.ok) {
