@@ -46,10 +46,13 @@ const remove = (spotId) => {
 }
 
 // POST Spot Images
-const addImages = (images) => {
+const addImages = (images, spotId) => {
     return {
         type: ADD_SPOT_IMAGES,
-        images
+        image: {
+            ...images,
+            spotId
+        }
     }
 }
 
@@ -145,7 +148,7 @@ export const createSpotImages = (spotId, previewImage, images) => async dispatch
 
     if (previewResponse.ok) {
         const newPreviewImage = await previewResponse.json();
-        dispatch(addImages(newPreviewImage));
+        dispatch(addImages(newPreviewImage, spotId));
     } else {
         console.error("Failed to submit preview image: ", previewResponse);
     }
@@ -163,7 +166,7 @@ export const createSpotImages = (spotId, previewImage, images) => async dispatch
 
         if (response.ok) {
             const newImage = await response.json();
-            dispatch(addImages(newImage));
+            dispatch(addImages(newImage, spotId));
         } else {
             console.error("Failed to submit image: ", response);
         }
@@ -223,9 +226,16 @@ const spotsReducer = (state = initialState, action) => {
             return newState;
         }
         case ADD_SPOT_IMAGES: {
+            const spotId = action.image.spotId;
             return {
                 ...state,
-                [action.images.SpotId]: action.images
+                [spotId]: {
+                    ...state[spotId],
+                    spotImages: [
+                        ...(state[spotId]?.spotImages || []),
+                        action.image
+                    ]
+                }
             };
         }
         default:

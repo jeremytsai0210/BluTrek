@@ -38,6 +38,8 @@ export const fetchReviews = (spotId) => async dispatch => {
 };
 
 export const createReview = (spotId, review) => async dispatch => {
+    // console.log("SpotId: ", spotId);
+    // console.log("Review: ", review);
     const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
         method: 'POST',
         headers: {
@@ -46,10 +48,13 @@ export const createReview = (spotId, review) => async dispatch => {
         body: JSON.stringify(review),
     });
 
+    // console.log("Response: ", response);
+
     if (response.ok) {
         const newReview = await response.json();
         dispatch(addReview(newReview));
         dispatch(fetchReviews(spotId));
+        window.location.reload();
         return newReview;
     } else {
         console.error("Failed to submit review: ", response);

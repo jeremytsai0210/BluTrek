@@ -260,7 +260,7 @@ const CreateSpot = () => {
                         <label key={index} className="image">
                             <input
                                 type="text"
-                                placeholder={"Image URL"}
+                                placeholder="Image URL"
                                 value={image}
                                 onChange={(e) => {
                                     const newImages = [...image];
@@ -272,7 +272,11 @@ const CreateSpot = () => {
                     ))}
                 </div>
                 <hr />
-                <button type="submit">Create Spot</button>
+                <button 
+                    type="submit"
+                    disabled={!address || !city || !state || !country || !description || !name || !price || !previewImage || description.length < 30}
+                    className="create-spot-button"
+                >Create Spot</button>
             </form>
         </div>
     )

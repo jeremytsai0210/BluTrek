@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as spotActions from "../../store/spots";
 import * as reviewActions from "../../store/reviews";
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import ReviewModal from "../ReviewModal/ReviewModal";
 import './SpotDetail.css';
 
 function SpotDetail() {
@@ -13,8 +15,14 @@ function SpotDetail() {
     const [spot, setSpot] = useState(null);
     const [reviews, setReviews] = useState([]);
     const [hasReviewed, setHasReviewed] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [rating, setRating] = useState(null);
 
     const user = useSelector((state) => state.session.user);
+
+    const onChange = (newRating) => {
+        setRating(newRating);
+    }
 
     // months object for review dates
     const months = {
@@ -66,11 +74,12 @@ function SpotDetail() {
     // console.log(noReviews());
 
     const noImage = "https://placehold.co/600x400?text=No available image";
+
     // Grab the previewImage for the large image
-    // const previewImage = spot.SpotImages.find((image) => {
-    //     return image = image.preview === true
-    // }).url;
-    const previewImage = noImage;
+    const previewImage = spot.SpotImages.find((image) => {
+        return image = image.preview === true
+    }).url;
+    // const previewImage = noImage;
     // console.log(previewImage);
 
     // Grab the images for the small images
@@ -110,6 +119,16 @@ function SpotDetail() {
         reviewDates.push(`${month} ${year}`);
     });
     // console.log(reviewDates);
+
+    // Conditions for posting a review button to appear:
+    // 1. User is logged in and have not posted a review - appears
+    // 2. User is logged in and is owner - hidden
+    // 3. User is logged in and have posted a review - hidden
+    // 4. User is not logged in - hidden
+
+    const isOwner = user && spot.Owner.id === user.id;
+    const hasBeenReviewed = reviews.find((review) => review.User.id === user.id);
+    const canReview = user && !isOwner && !hasBeenReviewed;
 
     return (
         <>
@@ -167,6 +186,33 @@ function SpotDetail() {
                     </span>
                 </h2>
                 {noReviews()}
+
+                <div className="review-modal">
+                    {canReview && (
+                        <OpenModalButton
+                            onButtonClick={() => setIsModalOpen(true)}
+                            buttonText={"Post Your Review"}
+                            modalComponent={
+                                <ReviewModal
+                                    spotId={spotId}
+                                    disabled={false}
+                                    onChange={onChange}
+                                    rating={rating}
+                                />}
+                            className="review-button"
+                        />
+                    )}
+                </div>
+
+                {/* {canReview && (
+                    <button
+                        className="review-button"
+                        onClick={() => setShowReviewModal(true)}
+                    >
+                        Post Your Review
+                    </button>
+                )} */}
+
                 <div className="reviews-list">
                     {reviews.map((review, index) => (
                         <div key={review.id} className="review-entry">
