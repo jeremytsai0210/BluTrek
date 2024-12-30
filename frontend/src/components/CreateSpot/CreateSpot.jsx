@@ -91,37 +91,37 @@ const CreateSpot = () => {
             lng: parseFloat(lng),
         }
 
-        // const preview = {
-        //     url: previewImage,
-        //     preview: true,
-        // }
+        const preview = {
+            url: previewImage,
+            preview: true,
+        }
 
-        // const thumbnails = [
-        //     {
-        //         url: images[0],
-        //         preview: false,
-        //     },
-        //     {
-        //         url: images[1],
-        //         preview: false,
-        //     },
-        //     {
-        //         url: images[2],
-        //         preview: false,
-        //     },
-        //     {
-        //         url: images[3],
-        //         preview: false,
-        //     },
-        // ]
+        const thumbnails = [
+            {
+                url: images[0],
+                preview: false,
+            },
+            {
+                url: images[1],
+                preview: false,
+            },
+            {
+                url: images[2],
+                preview: false,
+            },
+            {
+                url: images[3],
+                preview: false,
+            },
+        ]
 
 
         const newSpot = await dispatch(spotActions.createSpot(spot));
-        // console.log("New Spot: ", newSpot);
-        // console.log("New Spot ID: ", newSpot.Spot.id);
+        console.log("New Spot: ", newSpot);
+        console.log("New Spot ID: ", newSpot.Spot.id);
 
-        // const newSpotImages = await dispatch(spotActions.createSpotImages(newSpot.Spot.id, preview, thumbnails));
-        // console.log("New Spot Images: ", newSpotImages);
+        const newSpotImages = await dispatch(spotActions.createSpotImages(newSpot.Spot.id, preview, thumbnails));
+        console.log("New Spot Images: ", newSpotImages);
 
         if (newSpot && newSpot.Spot.id) {
             alert("Spot created successfully!");
